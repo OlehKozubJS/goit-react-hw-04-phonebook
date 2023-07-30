@@ -6,7 +6,7 @@ export const ContactForm = ({submitFunction}) => {
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = event.currentTarget.elements;
-    this.props.submitFunction({ name: name.value, number: number.value });
+    submitFunction({ name: name.value, number: number.value });
     event.currentTarget.reset();
   };
 
@@ -14,8 +14,7 @@ export const ContactForm = ({submitFunction}) => {
     return (
       <form
         className={ContactFormStyles.contactForm}
-        onSubmit={this.handleSubmit}
-        value={this.state}
+        onSubmit={handleSubmit}
       >
         <label htmlFor="name">
           <h3 className={ContactFormStyles.contactFormInputHeader}>Name</h3>
