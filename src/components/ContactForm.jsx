@@ -2,7 +2,7 @@ import { Component } from 'react';
 import propTypes from 'prop-types';
 import ContactFormStyles from './PhonebookCSS/ContactForm.module.css';
 
-export class ContactForm extends Component {
+export const ContactForm = ({submitFunction}) => {
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = event.currentTarget.elements;
