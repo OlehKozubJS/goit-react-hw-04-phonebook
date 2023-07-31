@@ -16,7 +16,6 @@ export const Phonebook = () => {
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
-    console.log(JSON.parse(localStorage.getItem('contacts')));
   }, [contacts]);
 
   const closeAlert = () => {
