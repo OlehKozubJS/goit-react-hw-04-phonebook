@@ -23,6 +23,11 @@ export const Phonebook = () => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
+  const closeAlert = () => {
+    setIsInContacts(false);
+    setName('');
+  };
+
   const addNewContact = data => {
     if (
       contacts.some(
@@ -33,21 +38,14 @@ export const Phonebook = () => {
       setName(data.name);
       return;
     }
-    setContacts(...contacts, { id: nanoid(), ...data });
+    setContacts([...contacts, { id: nanoid(), ...data }]);
     closeAlert();
   };
 
-  const closeAlert = () => {
-    setIsInContacts(false);
-    setName('');
-  };
-
   const findContactsByName = () => {
-    const userSearchData = this.state.filter;
-    const searchResults = this.state.contacts.filter(contact =>
-      contact.name.toLowerCase().includes(userSearchData.toLowerCase())
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
     );
-    return searchResults;
   };
 
   return (
