@@ -4,32 +4,25 @@ import { Filter } from './Filter';
 import { Alert } from './Alert';
 import { nanoid } from 'nanoid';
 import PhonebookStyles from './PhonebookCSS/Pnonebook.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const Phonebook = () => {
-  state = {
-    contacts: [],
-    filter: '',
-    isInContacts: false,
-    name: '',
-  };
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState("");
   const [isInContacts, setIsInContacts] = useState(false);
   const [name, setName] = useState("");
 
-  componentDidMount() {
+  useEffect( () => {
     const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
     if (parsedContacts) {
-      this.setState({ contacts: parsedContacts });
-    }
-  }
+      setContacts(parsedContacts);
+    }, []
+  );
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
-  }
+  useEffect(() => {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]
+  )
 
   addNewContact = data => {
     if (
