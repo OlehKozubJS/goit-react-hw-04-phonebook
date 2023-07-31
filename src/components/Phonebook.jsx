@@ -42,12 +42,6 @@ export const Phonebook = () => {
     closeAlert();
   };
 
-  const findContactsByName = () => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
-
   return (
     <div className={PhonebookStyles.phonebook}>
       <h1 className={PhonebookStyles.phonebookHeader}>Phonebook</h1>
@@ -64,7 +58,13 @@ export const Phonebook = () => {
       />
       <ContactList
         className="contactList"
-        items={filter ? findContactsByName() : contacts}
+        items={
+          filter
+            ? contacts.filter(contact =>
+                contact.name.toLowerCase().includes(filter.toLowerCase())
+              )
+            : contacts
+        }
         clickFunction={id =>
           setContacts(contacts.filter(contact => contact.id !== id))
         }
