@@ -64,7 +64,7 @@ export const Phonebook = () => {
       />
       <ContactList
         className="contactList"
-        items={!filter ? contacts : findContactsByName()}
+        items={filter ? findContactsByName() : contacts}
         clickFunction={id =>
           setContacts(contacts.filter(contact => contact.id !== id))
         }
