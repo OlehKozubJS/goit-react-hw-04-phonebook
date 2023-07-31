@@ -8,21 +8,20 @@ import { useState, useEffect } from 'react';
 
 export const Phonebook = () => {
   const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState('');
   const [isInContacts, setIsInContacts] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
   useEffect(() => {
     const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
     if (parsedContacts) {
       setContacts(parsedContacts);
-    }, []
-  );
+    }
+  }, []);
 
   useEffect(() => {
-      localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]
-  )
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
 
   addNewContact = data => {
     if (
@@ -84,4 +83,4 @@ export const Phonebook = () => {
       />
     </div>
   );
-}
+};
