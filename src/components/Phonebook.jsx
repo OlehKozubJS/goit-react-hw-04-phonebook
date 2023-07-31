@@ -4,6 +4,7 @@ import { Filter } from './Filter';
 import { Alert } from './Alert';
 import { nanoid } from 'nanoid';
 import PhonebookStyles from './PhonebookCSS/Pnonebook.module.css';
+import { useState } from 'react';
 
 export const Phonebook = () => {
   state = {
@@ -12,6 +13,10 @@ export const Phonebook = () => {
     isInContacts: false,
     name: '',
   };
+  const [contacts, setContacts] = useState([]);
+  const [filter, setFilter] = useState("");
+  const [isInContacts, setIsInContacts] = useState(false);
+  const [name, setName] = useState("");
 
   componentDidMount() {
     const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
