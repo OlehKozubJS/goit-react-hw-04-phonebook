@@ -12,7 +12,7 @@ export const Phonebook = () => {
   const [isInContacts, setIsInContacts] = useState(false);
   const [name, setName] = useState("");
 
-  useEffect( () => {
+  useEffect(() => {
     const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
     if (parsedContacts) {
       setContacts(parsedContacts);
