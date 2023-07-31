@@ -50,12 +50,6 @@ export const Phonebook = () => {
     return searchResults;
   };
 
-  deleteContact = id => {
-    this.setState({
-      contacts: this.state.contacts.filter(contact => contact.id !== id),
-    });
-  };
-
   return (
     <div className={PhonebookStyles.phonebook}>
       <h1 className={PhonebookStyles.phonebookHeader}>Phonebook</h1>
