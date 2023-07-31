@@ -11,17 +11,11 @@ export const Phonebook = () => {
     JSON.parse(localStorage.getItem('contacts') || [])
   );
   const [filter, setFilter] = useState('');
-  const [isInContacts, setIsInContacts] = useState(false);
   const [name, setName] = useState('');
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-
-  const closeAlert = () => {
-    setIsInContacts(false);
-    setName('');
-  };
 
   const addNewContact = data => {
     if (
@@ -29,12 +23,12 @@ export const Phonebook = () => {
         contact => contact.name.toLowerCase() === data.name.toLowerCase()
       )
     ) {
-      setIsInContacts(true);
+      //setIsInContacts(true);
       setName(data.name);
       return;
     }
     setContacts([...contacts, { id: nanoid(), ...data }]);
-    closeAlert();
+    setName('');
   };
 
   return (
@@ -42,9 +36,9 @@ export const Phonebook = () => {
       <h1 className={PhonebookStyles.phonebookHeader}>Phonebook</h1>
       <ContactForm submitFunction={addNewContact} />
       <Alert
-        isInContacts={isInContacts}
+        isInContacts={!!name}
         name={name}
-        clickFunction={closeAlert}
+        clickFunction={() => setName('')}
       />
       <h2 className={PhonebookStyles.contactsHeader}>Contacts</h2>
       <Filter
