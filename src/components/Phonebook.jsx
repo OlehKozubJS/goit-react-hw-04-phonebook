@@ -7,20 +7,16 @@ import PhonebookStyles from './PhonebookCSS/Pnonebook.module.css';
 import { useState, useEffect } from 'react';
 
 export const Phonebook = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(
+    JSON.parse(localStorage.getItem('contacts') || [])
+  );
   const [filter, setFilter] = useState('');
   const [isInContacts, setIsInContacts] = useState(false);
   const [name, setName] = useState('');
 
   useEffect(() => {
-    const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-    if (parsedContacts) {
-      setContacts(parsedContacts);
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
+    console.log(JSON.parse(localStorage.getItem('contacts')));
   }, [contacts]);
 
   const closeAlert = () => {
