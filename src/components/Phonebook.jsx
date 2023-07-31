@@ -5,7 +5,7 @@ import { Alert } from './Alert';
 import { nanoid } from 'nanoid';
 import PhonebookStyles from './PhonebookCSS/Pnonebook.module.css';
 
-export class Phonebook extends Component {
+export const Phonebook = () => {
   state = {
     contacts: [],
     filter: '',
@@ -64,28 +64,26 @@ export class Phonebook extends Component {
     });
   };
 
-  render() {
-    return (
-      <div className={PhonebookStyles.phonebook}>
-        <h1 className={PhonebookStyles.phonebookHeader}>Phonebook</h1>
-        <ContactForm submitFunction={this.addNewContact} />
-        <Alert
-          isInContacts={this.state.isInContacts}
-          name={this.state.name}
-          clickFunction={this.closeAlert}
-        />
-        <h2 className={PhonebookStyles.contactsHeader}>Contacts</h2>
-        <Filter className="filterInput" changeFunction={this.enterFilterData} />
-        <ContactList
-          className="contactList"
-          items={
-            this.state.filter === ''
-              ? this.state.contacts
-              : this.findContactsByName()
-          }
-          clickFunction={this.deleteContact}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className={PhonebookStyles.phonebook}>
+      <h1 className={PhonebookStyles.phonebookHeader}>Phonebook</h1>
+      <ContactForm submitFunction={this.addNewContact} />
+      <Alert
+        isInContacts={this.state.isInContacts}
+        name={this.state.name}
+        clickFunction={this.closeAlert}
+      />
+      <h2 className={PhonebookStyles.contactsHeader}>Contacts</h2>
+      <Filter className="filterInput" changeFunction={this.enterFilterData} />
+      <ContactList
+        className="contactList"
+        items={
+          this.state.filter === ''
+            ? this.state.contacts
+            : this.findContactsByName()
+        }
+        clickFunction={this.deleteContact}
+      />
+    </div>
+  );
 }
