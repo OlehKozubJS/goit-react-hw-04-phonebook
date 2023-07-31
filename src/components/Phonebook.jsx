@@ -23,7 +23,6 @@ export const Phonebook = () => {
         contact => contact.name.toLowerCase() === data.name.toLowerCase()
       )
     ) {
-      //setIsInContacts(true);
       setName(data.name);
       return;
     }
