@@ -45,7 +45,7 @@ export const Phonebook = () => {
   };
 
   const deleteContact = id => {
-    setContacts(contacts.filter(contact => contact.id !== id));
+    setContacts(prevState => prevState.filter(contact => contact.id !== id));
   };
 
   return (
