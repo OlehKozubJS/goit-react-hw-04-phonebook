@@ -36,6 +36,10 @@ export const Phonebook = () => {
     );
   };
 
+  const deleteContact = id => {
+    setContacts(contacts.filter(contact => contact.id !== id));
+  };
+
   return (
     <div className={PhonebookStyles.phonebook}>
       <h1 className={PhonebookStyles.phonebookHeader}>Phonebook</h1>
@@ -53,9 +57,7 @@ export const Phonebook = () => {
       <ContactList
         className="contactList"
         items={filter ? filteredContacts() : contacts}
-        clickFunction={id =>
-          setContacts(contacts.filter(contact => contact.id !== id))
-        }
+        clickFunction={deleteContact}
       />
     </div>
   );
