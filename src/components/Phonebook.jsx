@@ -36,6 +36,10 @@ export const Phonebook = () => {
     );
   };
 
+  const closeAlert = () => {
+    setName('');
+  };
+
   const searchQueryInput = value => {
     setFilter(value);
   };
@@ -48,11 +52,7 @@ export const Phonebook = () => {
     <div className={PhonebookStyles.phonebook}>
       <h1 className={PhonebookStyles.phonebookHeader}>Phonebook</h1>
       <ContactForm submitFunction={addNewContact} />
-      <Alert
-        isInContacts={!!name}
-        name={name}
-        clickFunction={() => setName('')}
-      />
+      <Alert isInContacts={!!name} name={name} clickFunction={closeAlert} />
       <h2 className={PhonebookStyles.contactsHeader}>Contacts</h2>
       <Filter className="filterInput" changeFunction={searchQueryInput} />
       <ContactList
