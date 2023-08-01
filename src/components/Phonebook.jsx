@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 
 export const Phonebook = () => {
   const [contacts, setContacts] = useState(
-    JSON.parse(localStorage.getItem('contacts') || [])
+    JSON.parse(localStorage.getItem('contacts')) || []
   );
   const [filter, setFilter] = useState('');
   const [name, setName] = useState('');
