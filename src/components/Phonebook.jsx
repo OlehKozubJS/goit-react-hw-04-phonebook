@@ -26,7 +26,7 @@ export const Phonebook = () => {
       setName(data.name);
       return;
     }
-    setContacts([...contacts, { id: nanoid(), ...data }]);
+    setContacts(prevState => [...prevState, { id: nanoid(), ...data }]);
     setName('');
   };
 
