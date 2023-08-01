@@ -36,6 +36,10 @@ export const Phonebook = () => {
     );
   };
 
+  const searchQueryInput = value => {
+    setFilter(value);
+  };
+
   const deleteContact = id => {
     setContacts(contacts.filter(contact => contact.id !== id));
   };
@@ -50,10 +54,7 @@ export const Phonebook = () => {
         clickFunction={() => setName('')}
       />
       <h2 className={PhonebookStyles.contactsHeader}>Contacts</h2>
-      <Filter
-        className="filterInput"
-        changeFunction={value => setFilter(value)}
-      />
+      <Filter className="filterInput" changeFunction={searchQueryInput} />
       <ContactList
         className="contactList"
         items={filter ? filteredContacts() : contacts}
